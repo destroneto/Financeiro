@@ -8,9 +8,9 @@
 </head>
 <body>
 	<h:form>
-		Nome: <h:inputText value="#{nomesBean.nome}" biding="#{nomesBean.inputNome}" />
+		Nome: <h:inputText value="#{nomesBean.nome}" binding="#{nomesBean.inputNome}" />
 		<br/>
-		<h:commandButton value="Adicionar" action="#{nomesBean.adicionar}" biding="#nomesBean.botaoAdicionar}"/>
+		<h:commandButton value="Adicionar" action="#{nomesBean.adicionar}" binding="#{nomesBean.botaoAdicionar}" />
 		<br/>
 		<ol>
 			<ui:repeat var="nome" value="#{nomesBean.nomes}">
