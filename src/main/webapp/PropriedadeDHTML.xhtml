@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html">
+<h:head>
+	<title>Propriedades DHTML</title>
+</h:head>
+<h:body>
+	<h:form>
+		<h:inputText onclick="this.value = '';"
+			onchange="this.value = this.value.toUpperCase();"
+			onmouseover="this.style.backgroundColor = 'yellow';"
+			onmouseout="this.style.backgroundColor = 'white';" />
+		<br />
+		<h:inputSecret value="#{loginBean.senha}" />
+		<br />
+		<h:inputTextarea cols="40" rows="3"
+			value="#{cadastroUsuarioBean.resumoCurriculo}" />
+		<br />
+		<h:graphicImage library="imagens" name="chew.jpg" width="200"
+			height="100" />
+
+	</h:form>
+</h:body>
+</html>
