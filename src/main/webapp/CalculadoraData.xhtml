@@ -13,9 +13,10 @@
 		<h:form id="frm">
 
 			<h:messages showDetail="true" showSummary="false" />
-			<h:inputText size="12" value="#{calculadoraDataBean.dataBase}">
-				<f:convertDateTime pattern="dd/MM/yyyy" />
-			</h:inputText>
+			<h:inputText size="12" value="#{calculadoraDataBean.dataBase}"
+				converter="smartDate">
+				<f:validator validatorId="diaUtil" /> 
+			</h:inputText>							
 			+ 
 			<h:inputText size="12" value="#{calculadoraDataBean.dias}" /> 
 			dias = 

@@ -9,18 +9,38 @@
 <h:body>
 	<h:form id="frm">
 		<h:messages />
-		<h:inputText size="12" value="#{calculadora.valorA}">
-			<f:convertNumber minFractionDigits="2" maxFractionDigits="2" locale="pt_BR" />
+
+		<h:outputLabel value="Seu nome: " for="seuNome" />
+		<h:inputText size="12" value="#{calculadora.nome}" id="seuNome"
+			label="Seu nome" required="true"
+			requiredMessage="Informe o seu nome."
+			validatorMessage="Informe o seu nome de 3 a 15 caracteres.">
+			<f:validateLength minimum="3" maximum="15" />
+		</h:inputText>
+		<br />
+
+		<h:inputText size="12" value="#{calculadora.valorA}" label="Valor A"
+			required="true">
+			<f:convertNumber minFractionDigits="2" maxFractionDigits="2"
+				locale="pt_BR" />
 		</h:inputText> 
 		+ 
-		<h:inputText size="12" value="#{calculadora.valorB}">
-			<f:convertNumber minFractionDigits="2" maxFractionDigits="2" locale="pt_BR" />
-		</h:inputText> 
-		= 
-		<h:outputText value="#{calculadora.resultado}">
-			<f:convertNumber type="currency" locale="pt_BR" />
-		</h:outputText>
+		<h:inputText size="12" value="#{calculadora.valorB}" label="Valor B"
+			required="true">
+			<f:convertNumber minFractionDigits="2" maxFractionDigits="2"
+				locale="pt_BR" />
+		</h:inputText>
 		<br />
+		<br />
+		<h:panelGroup rendered="#{calculadora.resultado != null}">
+			<h:outputText value="#{calculadora.nome}, o resultado é " />
+			<h:outputText value="#{calculadora.resultado}">
+				<f:convertNumber type="currency" locale="pt_BR" />
+			</h:outputText>
+			<br />
+			<br />
+		</h:panelGroup>
+
 
 		<h:commandButton value="somar" action="#{calculadora.somar}" />
 	</h:form>
