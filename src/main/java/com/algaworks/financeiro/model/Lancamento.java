@@ -15,6 +15,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotEmpty;
+
+import com.algaworks.financeiro.validations.DecimalPositivo;
 
 @Entity
 @Table(name = "lancamento")
@@ -74,22 +80,28 @@ public class Lancamento implements Serializable {
 		this.pessoa = pessoa;
 	}
 	
+	@NotEmpty
+	@Size(max = 80)
 	@Column(length = 80, nullable = false)
 	public String getDescricao() {
 		return descricao;
 	}
+	
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
 	
+	@DecimalPositivo
 	@Column(precision = 10, scale = 2, nullable = false)
 	public BigDecimal getValor() {
 		return valor;
 	}
+	
 	public void setValor(BigDecimal valor) {
 		this.valor = valor;
 	}
 	
+	@NotNull
 	@Enumerated(EnumType.STRING)
 	@Column(nullable = false)
 	public TipoLancamento getTipo() {
@@ -99,6 +111,7 @@ public class Lancamento implements Serializable {
 		this.tipo = tipo;
 	}
 	
+	@NotNull
 	@Temporal(TemporalType.DATE)
 	@Column(name = "data_vencimento", nullable = false)
 	public Date getDataVencimento() {
@@ -109,7 +122,7 @@ public class Lancamento implements Serializable {
 	}
 	
 	@Temporal(TemporalType.DATE)
-	@Column(name = "data_pagamento", nullable = false)
+	@Column(name = "data_pagamento", nullable = true)
 	public Date getDataPagamento() {
 		return dataPagamento;
 	}
